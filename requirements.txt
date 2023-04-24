@@ -1,2 +1,2 @@
 google-api-python-client
-llama-agi==0.1.0
+llama-agi==0.1.1

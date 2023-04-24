@@ -42,7 +42,7 @@ with setup_tab:
     st.subheader("AGI Setup")
     objective = st.text_input("Objective:", value="Solve world hunger")
     initial_task = st.text_input("Initial Task:", value="Create a list of tasks")
-
+    max_iterations = st.slider("Iterations until pause", value=2, min_value=1, max_value=100, step=5)
 
     if st.button('Initialize?'):
         os.environ['OPENAI_API_KEY'] = openai_api_key
@@ -84,5 +84,5 @@ with launch_tab:
             # launch the auto runner
             with st.spinner("Running!"):
                 runner = AutoStreamlitAGIRunner(st.session_state['task_manager'], st.session_state['execution_agent'])
-                runner.run(st.session_state['objective'], st.session_state['initial_task'], 2)
+                runner.run(st.session_state['objective'], st.session_state['initial_task'], 2, max_iterations=max_iterations)
 
