@@ -20,6 +20,9 @@ setup_tab, launch_tab = st.tabs(["Setup", "Launch"])
 with setup_tab:
     st.subheader("LLM Setup")
     col1, col2, col3 = st.columns(3)
+    
+    if 'init' in st.session_state:
+        st.success("Initialized!")
 
     with col1:
         openai_api_key = st.text_input("Enter your OpenAI API key here", type="password")
@@ -74,8 +77,6 @@ with setup_tab:
         st.session_state['objective'] = objective
 
         st.session_state['init'] = True
-        st.success("Initialized!")
-
 
 with launch_tab:
     st.subheader("AGI Status")
