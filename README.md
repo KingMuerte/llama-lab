@@ -1,3 +1,16 @@
+---
+title: Llama Agi Auto
+emoji: 🚀
+colorFrom: green
+colorTo: gray
+sdk: streamlit
+sdk_version: 1.19.0
+app_file: app.py
+pinned: false
+license: mit
+---
+
+Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 # 🦙🧪  Llama Lab 🧬🦙
 
 Llama Lab is a repo dedicated to building cutting-edge projects using [LlamaIndex](https://github.com/jerryjliu/llama_index). 
