@@ -14,7 +14,7 @@ from llama_index import ServiceContext, LLMPredictor
 st.set_page_config(layout="wide")
 st.header("🤖 Llama AGI 🦙")
 st.markdown("This demo uses the [llama-agi](https://github.com/run-llama/llama-lab/tree/main/llama_agi) package to create an AutoGPT-like agent, powered by [LlamaIndex](https://github.com/jerryjliu/llama_index) and Langchain. The AGI has access to tools that search the web and record notes, as it works to achieve an objective.") 
-st.markdown("Use the setup tab to configure your LLM settings and initial objective+tasks. Then use the Launch tab to run the AGI. Kill the process by clicking 'Stop' in the top right.")
+st.markdown("Use the setup tab to configure your LLM settings and initial objective+tasks. Then use the Launch tab to run the AGI. Kill the process by clicking the 'Stop' button.")
 
 setup_tab, launch_tab = st.tabs(["Setup", "Launch"])
 
@@ -85,3 +85,6 @@ with launch_tab:
             with st.spinner("Running!"):
                 runner = AutoStreamlitAGIRunner(st.session_state['task_manager'], st.session_state['execution_agent'])
                 runner.run(st.session_state['objective'], st.session_state['initial_task'], 2)
+
+    if st.button('Stop AGI'):
+        st.stop()
