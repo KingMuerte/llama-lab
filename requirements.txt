@@ -1,1 +1,2 @@
+google-api-python-client
 llama-agi==0.1.0
