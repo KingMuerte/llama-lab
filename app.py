@@ -7,7 +7,6 @@ from langchain.llms import OpenAI
 from llama_agi.execution_agent import ToolExecutionAgent
 from llama_agi.runners import AutoStreamlitAGIRunner
 from llama_agi.task_manager import LlamaTaskManager
-from llama_agi.tools import search_notes, record_note, search_webpage
 
 from llama_index import ServiceContext, LLMPredictor
 
@@ -67,6 +66,7 @@ with setup_tab:
             [initial_task], task_service_context=service_context
         )
 
+        from llama_agi.tools import search_notes, record_note, search_webpage
         tools = load_tools(["google-search-results-json"])
         tools = tools + [search_notes, record_note, search_webpage]
         st.session_state['execution_agent'] = ToolExecutionAgent(llm=llm, tools=tools)
