@@ -84,7 +84,7 @@ with launch_tab:
     if st.button("Launch"):
         if st.session_state.get('init', False):
             # launch the auto runner
-            st.button("Stop AGI", on_click=st.experimental_rerun)
+            st.button("Stop AGI", on_click=st.stop)
             with st.spinner("Running!"):
                 runner = AutoStreamlitAGIRunner(st.session_state['task_manager'], st.session_state['execution_agent'])
                 runner.run(st.session_state['objective'], st.session_state['initial_task'], 2)
