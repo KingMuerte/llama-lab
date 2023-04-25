@@ -18,11 +18,11 @@ st.markdown("This demo uses the [llama-agi](https://github.com/run-llama/llama-l
 setup_tab, launch_tab = st.tabs(["Setup", "Launch"])
 
 with setup_tab:
-    st.subheader("LLM Setup")
-    col1, col2, col3 = st.columns(3)
-    
     if 'init' in st.session_state:
         st.success("Initialized!")
+
+    st.subheader("LLM Setup")
+    col1, col2, col3 = st.columns(3)
 
     with col1:
         openai_api_key = st.text_input("Enter your OpenAI API key here", type="password")
@@ -45,7 +45,7 @@ with setup_tab:
     st.subheader("AGI Setup")
     objective = st.text_input("Objective:", value="Solve world hunger")
     initial_task = st.text_input("Initial Task:", value="Create a list of tasks")
-    max_iterations = st.slider("Iterations until pause", value=2, min_value=1, max_value=100, step=5)
+    max_iterations = st.slider("Iterations until pause", value=1, min_value=1, max_value=10, step=1)
 
     if st.button('Initialize?'):
         os.environ['OPENAI_API_KEY'] = openai_api_key
@@ -77,10 +77,11 @@ with setup_tab:
         st.session_state['objective'] = objective
 
         st.session_state['init'] = True
+        st.experimental_rerun()
 
 with launch_tab:
     st.subheader("AGI Status")
-    if st.button("Launch"):
+    if st.button(f"Continue for {max_iterations} Steps"):
         if st.session_state.get('init', False):
             # launch the auto runner
             with st.spinner("Running!"):
